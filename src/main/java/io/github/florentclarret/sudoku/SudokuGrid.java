@@ -6,7 +6,7 @@ public interface SudokuGrid {
 
     int getValue(final int row, final int column);
 
-    int setValue(final int row, final int column, final int value);
+    void setValue(final int row, final int column, final int value);
 
     void reset(final int row, final int column);
 
