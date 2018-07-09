@@ -52,12 +52,6 @@ public class MatrixGrid extends AbstractSudokuGrid {
     }
 
     @Override
-    public void reset(final int row, final int column) {
-        super.checkCoordinates(row, column);
-        this.grid[row][column] = UNDEFINED_VALUE;
-    }
-
-    @Override
     public void resetAll() {
         Arrays.stream(this.grid).forEach(column -> Arrays.fill(column, UNDEFINED_VALUE));
     }
