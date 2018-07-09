@@ -1,4 +1,6 @@
-package io.github.florentclarret.sudoku;
+package io.github.florentclarret.sudoku.impl;
+
+import io.github.florentclarret.sudoku.AbstractSudokuGrid;
 
 import java.util.Arrays;
 import java.util.Objects;
