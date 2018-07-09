@@ -1,4 +1,4 @@
-package io.github.florentclarret.sudoku;
+package io.github.florentclarret.sudoku.grid;
 
 public abstract class AbstractSudokuGrid implements SudokuGrid {
 
