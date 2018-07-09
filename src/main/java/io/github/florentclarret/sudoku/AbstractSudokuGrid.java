@@ -18,6 +18,21 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         return size;
     }
 
+    @Override
+    public void reset(final int row, final int column) {
+        this.checkCoordinates(row, column);
+        this.setValue(row, column, UNDEFINED_VALUE);
+    }
+
+    @Override
+    public void resetAll() {
+        for (int row = 0; row < size; ++row) {
+            for (int column = 0; column < size; ++column) {
+                this.reset(row, column);
+            }
+        }
+    }
+
     protected void checkCoordinates(final int row, final int column) {
         if(!(row >= 0 && row < size && column >= 0 && column < size)) {
             throw new IllegalArgumentException(String.format("Invalid coordinates [%dx%d] for a grid [%dx%d]", row,
