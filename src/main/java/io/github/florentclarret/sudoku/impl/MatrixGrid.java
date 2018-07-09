@@ -22,12 +22,12 @@ public class MatrixGrid extends AbstractSudokuGrid {
         this.grid = Objects.requireNonNull(grid);
 
         if (grid.length != size) {
-            throw new IllegalArgumentException("the grid must be " + size + "x" + size);
+            throw new IllegalArgumentException(String.format("the grid must be [%dx%d]", size, size));
         }
 
         for (int row = 0; row < size; ++row) {
             if (Objects.requireNonNull(grid).length != size) {
-                throw new IllegalArgumentException("the grid must be " + size + "x" + size);
+                throw new IllegalArgumentException(String.format("the grid must be [%dx%d]", size, size));
             }
 
             System.arraycopy(grid[row], 0, this.grid[row], 0, size);
