@@ -14,6 +14,7 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         this.size = size;
     }
 
+    @Override
     public int getSize() {
         return size;
     }

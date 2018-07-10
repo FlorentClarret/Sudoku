@@ -38,4 +38,9 @@ public interface SudokuGrid {
      */
     void resetAll();
 
+    /**
+     * Return the size of the sudoku grid.
+     */
+    int getSize();
+
 }
