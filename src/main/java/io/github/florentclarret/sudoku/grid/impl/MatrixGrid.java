@@ -19,14 +19,14 @@ public class MatrixGrid extends AbstractSudokuGrid {
     public MatrixGrid(final int size, final int[][] grid) {
         super(size);
 
-        this.grid = Objects.requireNonNull(grid);
+        this.grid = Objects.requireNonNull(grid, "the grid must not be null");
 
         if (grid.length != size) {
             throw new IllegalArgumentException(String.format("the grid must be [%dx%d]", size, size));
         }
 
         for (int row = 0; row < size; ++row) {
-            if (Objects.requireNonNull(grid).length != size) {
+            if (Objects.requireNonNull(grid[row]).length != size) {
                 throw new IllegalArgumentException(String.format("the grid must be [%dx%d]", size, size));
             }
 
