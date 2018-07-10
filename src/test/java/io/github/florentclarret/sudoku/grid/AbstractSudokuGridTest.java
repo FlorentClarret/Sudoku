@@ -2,11 +2,10 @@ package io.github.florentclarret.sudoku.grid;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import java.util.function.Function;
 
-public class AbstractSudokuGridTest<T extends AbstractSudokuGrid> extends SudokuGridTest<T> {
+public abstract class AbstractSudokuGridTest<T extends AbstractSudokuGrid> extends SudokuGridTest<T> {
 
     private final Function<Integer, T> creator;
 
