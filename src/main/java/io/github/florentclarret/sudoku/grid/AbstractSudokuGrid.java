@@ -40,4 +40,11 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
                     column, size, size));
         }
     }
+
+    protected void checkValue(final int value) {
+        if (value != UNDEFINED_VALUE && (value < 1 || value > this.getSize())) {
+            throw new IllegalArgumentException(String.format("Invalid value [%d] for a grid [%dx%d]", value, this
+                    .getSize(), this.getSize()));
+        }
+    }
 }

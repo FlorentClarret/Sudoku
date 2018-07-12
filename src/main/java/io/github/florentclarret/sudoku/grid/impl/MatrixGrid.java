@@ -47,11 +47,7 @@ public class MatrixGrid extends AbstractSudokuGrid {
 
     @Override
     public void setValue(final int row, final int column, final int value) {
-        if (value != UNDEFINED_VALUE && (value < 1 || value > super.getSize())) {
-            throw new IllegalArgumentException(String.format("Invalid value [%d] for a grid [%dx%d]", value, super
-                    .getSize(), super.getSize()));
-        }
-
+        super.checkValue(value);
         super.checkCoordinates(row, column);
         this.grid[row][column] = value;
     }
