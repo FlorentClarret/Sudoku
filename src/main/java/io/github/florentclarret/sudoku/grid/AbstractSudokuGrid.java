@@ -1,5 +1,7 @@
 package io.github.florentclarret.sudoku.grid;
 
+import com.google.common.base.Strings;
+
 /**
  * Abstract class which represents a sudoku grid
  */
@@ -84,7 +86,7 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
 
         for (int row = 0; row < size; ++row) {
             for (int column = 0; column < size; ++column) {
-                stringBuilder.append(this.getValue(row, column))
+                stringBuilder.append(String.format("%02d", this.getValue(row, column)))
                         .append(" ");
 
                 if ((column + 1) % separatorIndex == 0 && (column + 1) != getSize()) {
@@ -95,7 +97,7 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
             stringBuilder.append(System.lineSeparator());
 
             if ((row + 1) % separatorIndex == 0 && (row + 1) != getSize()) {
-                stringBuilder.append("---------------------")
+                stringBuilder.append(Strings.repeat("-", getSize() * 3 + 3))
                     .append(System.lineSeparator());
             }
         }
