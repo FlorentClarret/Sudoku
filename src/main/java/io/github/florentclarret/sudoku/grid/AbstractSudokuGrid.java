@@ -76,4 +76,30 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
                     .getSize(), this.getSize()));
         }
     }
+
+    @Override
+    public String toString() {
+        final int separatorIndex = getSize() / 3;
+        final StringBuilder stringBuilder = new StringBuilder(300);
+
+        for (int row = 0; row < size; ++row) {
+            for (int column = 0; column < size; ++column) {
+                stringBuilder.append(this.getValue(row, column))
+                        .append(" ");
+
+                if ((column + 1) % separatorIndex == 0 && (column + 1) != getSize()) {
+                    stringBuilder.append("| ");
+                }
+            }
+
+            stringBuilder.append(System.lineSeparator());
+
+            if ((row + 1) % separatorIndex == 0 && (row + 1) != getSize()) {
+                stringBuilder.append("---------------------")
+                    .append(System.lineSeparator());
+            }
+        }
+
+        return stringBuilder.toString();
+    }
 }
