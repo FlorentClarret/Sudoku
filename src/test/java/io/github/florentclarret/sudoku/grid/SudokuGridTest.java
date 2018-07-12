@@ -65,6 +65,13 @@ public abstract class SudokuGridTest<T extends SudokuGrid> {
     }
 
     @Test
+    public void testReset_WithInvalidCoordinates() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.reset(12,8));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.reset(8,9));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.reset(-1,10));
+    }
+
+    @Test
     public void testSetValue() {
         grid.resetAll();
 
@@ -75,6 +82,20 @@ public abstract class SudokuGridTest<T extends SudokuGrid> {
                 Assertions.assertEquals(value, grid.getValue(row, column));
             }
         }
+    }
+
+    @Test
+    public void testSetValue_WithInvalidCoordinates() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(12,8, 1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(8,9, 1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(-1,10, 1));
+    }
+
+    @Test
+    public void testGetValue_WithInvalidCoordinates() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.getValue(12,8));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.getValue(8,9));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.getValue(-1,10));
     }
 
     @Test

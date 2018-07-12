@@ -15,6 +15,7 @@ public interface SudokuGrid {
      * @param row The row of the cell.
      * @param column The column of the cell.
      * @return The value stored inside the cell.
+     * @throws IllegalArgumentException if the coordinates are invalid
      */
     int getValue(final int row, final int column);
 
@@ -23,6 +24,8 @@ public interface SudokuGrid {
      * @param row The row of the cell.
      * @param column The column of the cell.
      * @param value The value to store.
+     * @throws IllegalArgumentException if the coordinates are invalid
+     * @throws IllegalArgumentException if the value is invalid
      */
     void setValue(final int row, final int column, final int value);
 
@@ -30,6 +33,7 @@ public interface SudokuGrid {
      * Reset the value of the specified cell the the default value.
      * @param row The row of the cell.
      * @param column The column of the cell.
+     * @throws IllegalArgumentException if the coordinates are invalid
      */
     void reset(final int row, final int column);
 

@@ -48,7 +48,7 @@ public abstract class AbstractSudokuGridTest<T extends AbstractSudokuGrid> exten
         for (int size = -1; size < 9; ++size) {
             final int finalSize = size;
             Assertions.assertThrows(IllegalArgumentException.class, () -> creator.apply(finalSize), "the size must "
-                    + "be" + " greater than 9");
+                    + "be greater than 9");
         }
     }
 
