@@ -54,6 +54,6 @@ public class MatrixGrid extends AbstractSudokuGrid {
 
     @Override
     public void resetAll() {
-        Arrays.stream(this.grid).forEach(column -> Arrays.fill(column, UNDEFINED_VALUE));
+        Arrays.stream(this.grid = new int[getSize()][getSize()]).forEach(column -> Arrays.fill(column, UNDEFINED_VALUE));
     }
 }
