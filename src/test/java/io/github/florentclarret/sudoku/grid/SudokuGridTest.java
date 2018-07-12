@@ -92,6 +92,13 @@ public abstract class SudokuGridTest<T extends SudokuGrid> {
     }
 
     @Test
+    public void testSetValue_WithInvalidValue() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(12,8, grid.getSize()));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(12,8, grid.getSize() + 1));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> grid.setValue(12,8, -1));
+    }
+
+    @Test
     public void testGetValue_WithInvalidCoordinates() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> grid.getValue(12,8));
         Assertions.assertThrows(IllegalArgumentException.class, () -> grid.getValue(8,9));
