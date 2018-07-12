@@ -1,9 +1,26 @@
 package io.github.florentclarret.sudoku.grid;
 
+/**
+ * Abstract class which represents a sudoku grid
+ */
 public abstract class AbstractSudokuGrid implements SudokuGrid {
 
+    /**
+     * The size of the grid. Most of the time, it's 9.
+     */
     private final int size;
 
+    /**
+     * Build a 9x9 sudoku grid.
+     */
+    public AbstractSudokuGrid() {
+        this(9);
+    }
+
+    /**
+     * Build a grid with the given size.
+     * @param size The size of the grid.
+     */
     public AbstractSudokuGrid(final int size) {
         if(size < 9) {
             throw new IllegalArgumentException("the size must be greater than 9");
@@ -12,6 +29,7 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         }
 
         this.size = size;
+        this.resetAll();
     }
 
     @Override
@@ -34,6 +52,12 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         }
     }
 
+    /**
+     * Allow you to check that a given coordinate is correct for the current grid.
+     * @param row The row of the cell to check.
+     * @param column The column of the cell to check.
+     * @throws IllegalArgumentException if the coordinates are invalid.
+     */
     protected void checkCoordinates(final int row, final int column) {
         if(!(row >= 0 && row < size && column >= 0 && column < size)) {
             throw new IllegalArgumentException(String.format("Invalid coordinates [%dx%d] for a grid [%dx%d]", row,
@@ -41,6 +65,11 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         }
     }
 
+    /**
+     * Check the given value is valid for the grid.
+     * @param value The value to check.
+     * @throws IllegalArgumentException if the value is invalid.
+     */
     protected void checkValue(final int value) {
         if (value != UNDEFINED_VALUE && (value < 1 || value > this.getSize())) {
             throw new IllegalArgumentException(String.format("Invalid value [%d] for a grid [%dx%d]", value, this
