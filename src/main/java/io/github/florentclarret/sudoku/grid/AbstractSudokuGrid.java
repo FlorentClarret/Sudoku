@@ -1,7 +1,5 @@
 package io.github.florentclarret.sudoku.grid;
 
-import com.google.common.base.Strings;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -182,8 +180,10 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
             stringBuilder.append(System.lineSeparator());
 
             if ((row + 1) % separatorIndex == 0 && (row + 1) != getSize()) {
-                stringBuilder.append(Strings.repeat("-", getSize() * 3 + 3))
-                    .append(System.lineSeparator());
+                for (int i = 0, max = getSize() * 3 + 3; i < max; ++i) {
+                    stringBuilder.append('-');
+                }
+                stringBuilder.append(System.lineSeparator());
             }
         }
 
