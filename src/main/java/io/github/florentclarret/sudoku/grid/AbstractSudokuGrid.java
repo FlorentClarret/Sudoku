@@ -59,7 +59,7 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
 
     @Override
     public boolean isValid() {
-        for (int index = 0; index < getSize(); ++index) {
+        for (int index = 0, size = getSize(); index < size; ++index) {
             if (!isValidSquare(index) || !isValidRow(index) || !isValidColumn(index)) {
                 return false;
             }
