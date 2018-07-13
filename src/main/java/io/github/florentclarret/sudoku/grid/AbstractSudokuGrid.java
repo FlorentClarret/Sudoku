@@ -2,9 +2,7 @@ package io.github.florentclarret.sudoku.grid;
 
 import com.google.common.base.Strings;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
