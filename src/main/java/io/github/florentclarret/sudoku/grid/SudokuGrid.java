@@ -52,4 +52,11 @@ public interface SudokuGrid {
      * @return true if the grid is valid, false otherwise.
      */
     boolean isValid();
+
+    /**
+     * Return whether a grid is completed or not.
+     * Completed means that the grid is valid and do not contain undefined values.
+     * @return true if the grid is completed, false otherwise.
+     */
+    boolean isCompleted();
 }

@@ -70,6 +70,19 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         return true;
     }
 
+    @Override
+    public boolean isCompleted() {
+        for (int row = 0; row < size; ++row) {
+            for (int column = 0; column < size; ++column) {
+                if (this.getValue(row, column) == UNDEFINED_VALUE) {
+                    return false;
+                }
+            }
+        }
+
+        return this.isValid();
+    }
+
     /**
      * Allow you to check that a given coordinate is correct for the current grid.
      * @param row The row of the cell to check.
