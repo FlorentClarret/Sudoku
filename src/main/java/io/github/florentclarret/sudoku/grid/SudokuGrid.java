@@ -47,4 +47,9 @@ public interface SudokuGrid {
      */
     int getSize();
 
+    /**
+     * Return whether a grid is still valid or not.
+     * @return true if the grid is valid, false otherwise.
+     */
+    boolean isValid();
 }

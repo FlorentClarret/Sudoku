@@ -2,6 +2,11 @@ package io.github.florentclarret.sudoku.grid;
 
 import com.google.common.base.Strings;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Abstract class which represents a sudoku grid
  */
@@ -54,6 +59,17 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
         }
     }
 
+    @Override
+    public boolean isValid() {
+        for (int index = 0; index < getSize(); ++index) {
+            if (!isValidSquare(index) || !isValidRow(index) || !isValidColumn(index)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     /**
      * Allow you to check that a given coordinate is correct for the current grid.
      * @param row The row of the cell to check.
@@ -77,6 +93,64 @@ public abstract class AbstractSudokuGrid implements SudokuGrid {
             throw new IllegalArgumentException(String.format("Invalid value [%d] for a grid [%dx%d]", value, this
                     .getSize(), this.getSize()));
         }
+    }
+
+    /**
+     * Check that a specific row is valid in the grid.
+     * @param row The row to check.
+     * @return true if the given row is valid, false otherwise
+     */
+    private boolean isValidRow(final int row) {
+        final Set<Integer> rowValues = new HashSet<>(getSize());
+
+        for (int i = 0, size = getSize(); i < size; ++i) {
+            final int currentValue = this.getValue(row, i);
+            if (currentValue != UNDEFINED_VALUE && !rowValues.add(currentValue)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Check that a specific column is valid in the grid.
+     * @param column The column to check.
+     * @return true if the given column is valid, false otherwise
+     */
+    private boolean isValidColumn(final int column) {
+        final Set<Integer> columnValues = new HashSet<>(getSize());
+
+        for (int i = 0, size = getSize(); i < size; ++i) {
+            final int currentValue = this.getValue(i, column);
+            if (currentValue != UNDEFINED_VALUE && !columnValues.add(currentValue)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Check that a specific square is valid in the grid.
+     * The square are numbered from left to right and top to down.
+     * @param square The square to check.
+     * @return true if the given square is valid, false otherwise
+     */
+    private boolean isValidSquare(final int square) {
+        final Set<Integer> squareValues = new HashSet<>(getSize());
+        final int squareSize = getSize() / 3;
+
+        for (int row = (square / 3) * squareSize, maxRox = (square / 3) * squareSize + squareSize; row < maxRox; ++row) {
+            for (int column = (square % 3) * squareSize, maxColumn = (square % 3) * squareSize + squareSize; column < maxColumn; ++column) {
+                final int currentValue = this.getValue(row, column);
+                if (currentValue != UNDEFINED_VALUE && !squareValues.add(currentValue)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     @Override
